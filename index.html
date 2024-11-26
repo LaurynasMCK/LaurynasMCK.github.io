@@ -7,8 +7,16 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
             text-align: center;
-            padding: 50px;
+        }
+        #dailyMessage {
+            font-size: 2em;
+            width: 80%;
         }
     </style>
 </head>
@@ -16,14 +24,43 @@
     <h1 id="dailyMessage"></h1>
     <script>
         const messages = [
-            "Testas",
-            "Testux",
-            "buckis",
-            // Add up to 25 messages here
+            "Day 1: Šiandien planavai žiūrėti Harį Poterį su Tėčiu - gražios Kalėdų laukimo pradžios:)",
+            "Day 2: Pirmadienis... egh. Nu tipo, pasilinksmink su bakiu :p",
+            "Day 3: Gruodžio 3 baxuras. Labai cj pasiilgau, nes antradienis, tai jau logiškai ilgai nesimatėm (apie dvi dienas) - kada meet?",
+            "Day 4: Bučkis bučkis bučkis sninga kalėdomis - atsiųsk, koks šiandien dienos muzikinis mood, o aš linkiu tau ŠYPSENOS",
+            "Day 5: Sveiki atvykę į antrą savaitės galą, tikiuos juda bakis. T.y. JUDINAM BAKĮ AOOOGA",
+            "Day 6: ;p ;p ;p ;p ;p whyd you only call me when ur high ;))",
+            "Day 7: Gerai, jei šiandien (šeštadienį) mes nemeetinam - gausi pzdi",
+            "Day 8: AR JAU LAIKAS KITAM HARIUI POTERIUI? (tu juk supranti, kad šituos rašau į ateitį ir net nenujaučiu, ką veiksi (dabar 11-26))",
+            "Day 9: liabas ;D ką tju? gero kloties šią savaitę, liko 7 dienos iki bakio, iki kelionės į Londę ir tik! tik 15 iki Kalėdų!!",
+            "Day 10: ai šiandien lengvai - bučkis",
+            "Day 11: Sveiki, čia jūsų pilotas šneka, skrisk su savo subine pas mane",
+            "Day 12: Gražios dienos, skanios kavos, laimingos kloties",
+            "Day 13: Šiaip jau at this point turėtum truputį užsisotint saldumynais - APKABINU, nes hipotetiškai sninga (arba tikiuos sninga)",
+            "Day 14: well well well, here we meet again. Jau artėja tas metas, kai privalėsi Rocky pažiūrėt..",
+            "Day 15: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH kokia tu graži ir faina :) RYT PRIDUODAM OH OH OH OH OH ",
+            "Day 16: READY TO DIVEEE pavarai pipiriukai, žinau, kad šiandien esi pasiruošus ir padarei maksimaliai daug ir tavim labai didžiuojuos! ! !",
+            "Day 17: UGH koks afteris, ane? Crazy vakar buvo, ikr, nu bet reikia bakio užkėlimą atšvęst",
+            "Day 18: Londėj, jaučiu kažkodėl, kad truputį pabodo šitos žinutės ir netikrini, bet jei - tai HELLLO MATE A CUP OF TEA AYE, linkėjimai Karaliui nuo manęs",
+            "Day 19: muah muah muah, kitty kitty kitty. Please bring some of yourself back, we ain't havin' the best time here",
+            "Day 20: keturios dienelės. Jei nepažiūrėjom nei vieno Hario per šitą laikotarpį, imma act up",
+            "Day 21: Trys dienos. Jei rimtai, tai tikiuos per šį laikotarpį neatititolom, o suartėjom :) daug man reiški",
+            "Day 22: Dvi dienelės liko. Kur naujus? :) Gali numest kokį bučkovą selfiuką?",
+            "Day 23: YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO ką tu? susitinkam būtinai, galimai dovanų turiu ;ppppppp",
+            "Day 24: Su Kūčiomis mano mažas mažas mažas mieliausias padarėli, labai pasiilgau (net jei esam kartu šiuo metu)",
+            "Day 25: KALĖĖĖĖĖĖĖĖĖDOS IŠTINKA, MERRY CHRISTMAS, Frohe Weihnachten, Feliz Navidad, Hyvää Joulua"
         ];
 
         const currentDate = new Date();
-        const day = currentDate.getDate() % 25;
+        const startDate = new Date('2024-10-21'); // Replace with the start date of your 25-day period
+
+        // Calculate the difference in days
+        const diffInTime = currentDate.getTime() - startDate.getTime();
+        const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24));
+
+        // Ensure it doesn't go beyond 25 days
+        const day = diffInDays < 25 ? diffInDays : 24; 
+
         document.getElementById('dailyMessage').innerText = messages[day];
     </script>
 </body>
