@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="dailyMessage"></h1>
+    <script>
+        const messages = [
+            "Message 1",
+            "Message 2",
+            "Message 3",
+            // Add up to 25 messages here
+        ];
+
+        const currentDate = new Date();
+        const day = currentDate.getDate() % 25;
+        document.getElementById('dailyMessage').innerText = messages[day];
+    </script>
+</body>
+</html>
