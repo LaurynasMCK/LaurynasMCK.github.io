@@ -51,12 +51,20 @@
             "KALĖĖĖĖĖĖĖĖĖDOS IŠTINKA, MERRY CHRISTMAS, Frohe Weihnachten, Feliz Navidad, Hyvää Joulua <333333333333333333333333333333"
         ];
 
+        const images = [
+            1: "puodelis.jpg"
+            4: "oogvejus_iskeliauja.gif"
+        ]
+
         const currentDate = new Date();
         const startDate = new Date('2024-12-01'); // Replace with the start date of your 25-day period
 
         // Calculate the difference in days
         const diffInTime = currentDate.getTime() - startDate.getTime();
         const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24));
+        const img = document.createElement("img"); 
+        img.src = images[today]; 
+        contentDiv.appendChild(img);
 
         // Ensure it doesn't go beyond 25 days
         const day = diffInDays < 25 ? diffInDays : 24; 
