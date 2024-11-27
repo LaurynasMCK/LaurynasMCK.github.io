@@ -13,20 +13,21 @@
             height: 100vh;
             margin: 0;
             text-align: center;
+            position: relative; /* Added for absolute positioning of images */
         }
         #dailyMessage {
             font-size: 2em;
             width: 80%;
         }
-
-        img { 
-            position: absolute; 
-            max-width: 100px; /* Adjust as needed */ 
+        img {
+            position: absolute;
+            max-width: 100px; /* Adjust as needed */
         }
     </style>
 </head>
 <body>
     <h1 id="dailyMessage"></h1>
+    <div id="imageContainer"></div> <!-- Added container for images -->
     <script>
         const messages = [
             "Šiandien planavai žiūrėti Harį Poterį su Tėčiu - gražios Kalėdų laukimo pradžios:)",
@@ -53,13 +54,14 @@
             "Dvi dienelės liko. Kur naujus? :) Gali numest kokį bučkovą selfiuką?",
             "YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO ką tu? susitinkam būtinai, galimai dovanų turiu ;ppppppp",
             "Su Kūčiomis mano mažas mažas mažas mieliausias padarėli, labai pasiilgau (net jei esam kartu šiuo metu) <333333333333333333",
-            "KALĖĖĖĖĖĖĖĖĖDOS IŠTINKA, MERRY CHRISTMAS, Frohe Weihnachten, Feliz Navidad, Hyvää Joulua <333333333333333333333333333333"
+            "KALĖĖĖĖĖĖĖĖDOS IŠTINKA, MERRY CHRISTMAS, Frohe Weihnachten, Feliz Navidad, Hyvää Joulua <333333333333333333333333333333"
         ];
 
-        const images = [
-            1: "puodelis.jpg"
+        const images = {
+            1: "puodelis.jpg",
             4: "oogvejus_iskeliauja.gif"
-        ]
+            // Add more images as needed
+        };
 
         const currentDate = new Date();
         const startDate = new Date('2024-11-27'); // Replace with the start date of your 25-day period
@@ -67,29 +69,35 @@
         // Calculate the difference in days
         const diffInTime = currentDate.getTime() - startDate.getTime();
         const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24));
-    
 
         // Ensure it doesn't go beyond 25 days
         const day = diffInDays < 25 ? diffInDays : 24; 
 
-        
-        document.getElementById('dailyMessage').innerText = messages[day];
-        if (images[day]) { 
-            const imageContainer = document.getElementById('imageContainer'); 
-            const img = document.createElement("img"); img.src = images[day]; 
-            img.alt = `Image for Day ${day}`; // 
-            Function to get random positions function getRandomPosition(maxWidth, maxHeight) { 
-                const x = Math.floor(Math.random() * maxWidth); 
-                const y = Math.floor(Math.random() * maxHeight); 
-                return { x, y }; 
-            } 
-            const maxWidth = window.innerWidth - 100; // Adjust size if needed 
-            const maxHeight = window.innerHeight - 100; // Adjust size if needed 
-            const { x, y } = getRandomPosition(maxWidth, maxHeight); 
-            img.style.left = `${x}px`; 
-            img.style.top = `${y}px`; 
-            imageContainer.appendChild(img);
-        
+        const dailyMessage = document.getElementById('dailyMessage');
+        dailyMessage.innerText = messages[day];
+
+        // Add image logic
+        if (images[day]) {
+            const img = document.createElement("img");
+            img.src = images[day];
+            img.alt = `Image for Day ${day}`;
+
+            // Function to get random positions
+            function getRandomPosition(maxWidth, maxHeight) {
+                const x = Math.floor(Math.random() * maxWidth);
+                const y = Math.floor(Math.random() * maxHeight);
+                return { x, y };
+            }
+
+            const maxWidth = window.innerWidth - 100; // Adjust size if needed
+            const maxHeight = window.innerHeight - 100; // Adjust size if needed
+            const { x, y } = getRandomPosition(maxWidth, maxHeight);
+
+            img.style.left = `${x}px`;
+            img.style.top = `${y}px`;
+
+            document.body.appendChild(img); // Append img to the body
+        }
     </script>
 </body>
 </html>
