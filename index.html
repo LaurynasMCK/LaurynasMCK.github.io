@@ -18,6 +18,11 @@
             font-size: 2em;
             width: 80%;
         }
+
+        img { 
+            position: absolute; 
+            max-width: 100px; /* Adjust as needed */ 
+        }
     </style>
 </head>
 <body>
@@ -62,14 +67,29 @@
         // Calculate the difference in days
         const diffInTime = currentDate.getTime() - startDate.getTime();
         const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24));
-        const img = document.createElement("img"); 
-        img.src = images[today]; 
-        contentDiv.appendChild(img);
+    
 
         // Ensure it doesn't go beyond 25 days
         const day = diffInDays < 25 ? diffInDays : 24; 
 
+        
         document.getElementById('dailyMessage').innerText = messages[day];
+        if (images[day]) { 
+            const imageContainer = document.getElementById('imageContainer'); 
+            const img = document.createElement("img"); img.src = images[day]; 
+            img.alt = `Image for Day ${day}`; // 
+            Function to get random positions function getRandomPosition(maxWidth, maxHeight) { 
+                const x = Math.floor(Math.random() * maxWidth); 
+                const y = Math.floor(Math.random() * maxHeight); 
+                return { x, y }; 
+            } 
+            const maxWidth = window.innerWidth - 100; // Adjust size if needed 
+            const maxHeight = window.innerHeight - 100; // Adjust size if needed 
+            const { x, y } = getRandomPosition(maxWidth, maxHeight); 
+            img.style.left = `${x}px`; 
+            img.style.top = `${y}px`; 
+            imageContainer.appendChild(img);
+        
     </script>
 </body>
 </html>
