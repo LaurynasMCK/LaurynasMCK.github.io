@@ -54,18 +54,23 @@
             "Su Kūčiomis mano mažas mažas mažas mieliausias padarėli, labai pasiilgau (net jei esam kartu šiuo metu) <333333333333333333",
             "KALĖĖĖĖĖĖĖĖĖDOS IŠTINKA, MERRY CHRISTMAS, Frohe Weihnachten, Feliz Navidad, Hyvää Joulua <333333333333333333333333333333"
         ];
+        function updateMessage() {
+            const currentDate = new Date();
+            const startDate = new Date('2024-11-27'); // Replace with the start date of your 25-day period
 
-        const currentDate = new Date();
-        const startDate = new Date('2024-11-27'); // Replace with the start date of your 25-day period
+            // Calculate the difference in days
+            const diffInTime = currentDate.getTime() - startDate.getTime();
+            const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24));
 
-        // Calculate the difference in days
-        const diffInTime = currentDate.getTime() - startDate.getTime();
-        const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24));
+            // Ensure it doesn't go beyond 25 days
+            const day = diffInDays < 25 ? diffInDays : 24;
 
-        // Ensure it doesn't go beyond 25 days
-        const day = diffInDays < 25 ? diffInDays : 24; 
+            document.getElementById('dailyMessage').innerText = messages[day];
+        }
 
-        document.getElementById('dailyMessage').innerText = messages[day];
+        updateMessage(); // Update message initially
+        setInterval(updateMessage, 60000); // Check every minute
+        
     </script>
 </body>
 </html>
