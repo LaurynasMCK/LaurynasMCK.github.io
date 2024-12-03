@@ -54,8 +54,9 @@
             "Dvi dienelės liko. Kur naujus? :) Gali numest kokį bučkovą selfiuką?",
             "YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO ką tu? susitinkam būtinai, galimai dovanų turiu ;ppppppp",
             "Su Kūčiomis mano mažas mažas mažas mieliausias padarėli, labai pasiilgau (net jei esam kartu šiuo metu) <333333333333333333",
-            "KALĖĖĖĖĖĖĖĖĖDOS IŠTINKA, MERRY CHRISTMAS, Frohe Weihnachten, Feliz Navidad, Hyvää Joulua <333333333333333333333333333333"
+            "KALĖĖĖĖĖĖĖĖDOS IŠTINKA, MERRY CHRISTMAS, Frohe Weihnachten, Feliz Navidad, Hyvää Joulua <333333333333333333333333333333"
         ];
+
         function updateMessage() {
             const currentDate = new Date();
             const startDate = new Date('2024-11-27'); // Replace with the start date of your 25-day period
@@ -70,9 +71,21 @@
             document.getElementById('dailyMessage').innerText = messages[day];
         }
 
+        function setNextMidnightUpdate() {
+            const now = new Date();
+            const nextMidnight = new Date(now);
+            nextMidnight.setHours(24, 0, 0, 0); // Set to next midnight
+
+            const timeUntilMidnight = nextMidnight.getTime() - now.getTime();
+            setTimeout(() => {
+                updateMessage();
+                setNextMidnightUpdate(); // Schedule next update
+            }, timeUntilMidnight);
+        }
+
         updateMessage(); // Update message initially
-        setInterval(updateMessage, 60000); // Check every minute
-        
+        setNextMidnightUpdate(); // Schedule the first update at midnight
     </script>
 </body>
 </html>
+
