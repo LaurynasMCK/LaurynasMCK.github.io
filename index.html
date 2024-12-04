@@ -54,7 +54,7 @@
             "Dvi dienelės liko. Kur naujus? :) Gali numest kokį bučkovą selfiuką?",
             "YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO ką tu? susitinkam būtinai, galimai dovanų turiu ;ppppppp",
             "Su Kūčiomis mano mažas mažas mažas mieliausias padarėli, labai pasiilgau (net jei esam kartu šiuo metu) <333333333333333333",
-            "KALĖĖĖĖĖĖĖĖDOS IŠTINKA, MERRY CHRISTMAS, Frohe Weihnachten, Feliz Navidad, Hyvää Joulua <333333333333333333333333333333"
+            "KALĖĖĖĖĖĖĖDOS IŠTINKA, MERRY CHRISTMAS, Frohe Weihnachten, Feliz Navidad, Hyvää Joulua <333333333333333333333333333333"
         ];
 
         function updateMessage() {
@@ -73,18 +73,23 @@
 
         function setNextMidnightUpdate() {
             const now = new Date();
-            const nextMidnight = new Date(now);
-            nextMidnight.setHours(24, 0, 0, 0); // Set to next midnight
+            const nextUpdate = new Date(now);
+            nextUpdate.setHours(23, 0, 0, 0); // Set to next update time (11 PM)
 
-            const timeUntilMidnight = nextMidnight.getTime() - now.getTime();
+            // If it's already past 11 PM, set the update for the next day
+            if (now >= nextUpdate){
+                nextUpdate.setDate(nextUpdate.getDate() + 1);
+            }
+
+            const timeUntilUpdate = nextUpdate.getTime() - now.getTime();
             setTimeout(() => {
                 updateMessage();
                 setNextMidnightUpdate(); // Schedule next update
-            }, timeUntilMidnight);
+            }, timeUntilUpdate);
         }
 
         updateMessage(); // Update message initially
-        setNextMidnightUpdate(); // Schedule the first update at midnight
+        setNextMidnightUpdate(); // Schedule the first update at the specified time
     </script>
 </body>
 </html>
