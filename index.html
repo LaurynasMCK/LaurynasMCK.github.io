@@ -74,7 +74,7 @@
         function setNextMidnightUpdate() {
             const now = new Date();
             const nextUpdate = new Date(now);
-            nextUpdate.setHours(23, 0, 0, 0); // Set to next update time (11 PM)
+            nextUpdate.setHours(20, 0, 0, 0); // Set to next update time (11 PM)
 
             // If it's already past 11 PM, set the update for the next day
             if (now >= nextUpdate) {
