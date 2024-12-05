@@ -26,10 +26,6 @@
     <h1 id="dailyMessage"></h1>
     <script>
         const messages = [
-            "dar laukiam",
-            "dar laukiam",
-            "dar laukiam (penktadienio edition)",
-            "dar laukiam (šeštadienio edition)(jei skaitai - parašyk)",
             "Šiandien gero Hario Poterio su Tėčiu - gražios Kalėdų laukimo pradžios:) (Haris Poteris - burtininkas, sori už spoilerį)",
             "Pirmadienis... egh. Nu tipo, pasilinksmink su bakiu :p",
             "Gruodžio 3 baxuras. TINKLINIUXAS, tinkliniuzas.. Gero flirto su treneriuku ;)))))))))",
@@ -59,7 +55,7 @@
 
         function updateMessage() {
             const currentDate = new Date();
-            const startDate = new Date('2024-11-27'); // Replace with the start date of your 25-day period
+            const startDate = new Date('2024-12-01'); // Replace with the start date of your 25-day period
 
             // Calculate the difference in days
             const diffInTime = currentDate.getTime() - startDate.getTime();
