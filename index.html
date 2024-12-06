@@ -88,7 +88,7 @@
         function setNextUpdate() {
             const now = new Date();
             const nextUpdate = new Date(now);
-            nextUpdate.setUTCHours(21, 59, 0, 0); // 11:59 PM Vilnius time is 9:59 PM UTC
+            nextUpdate.setUTCHours(19, 59, 0, 0); // 11:59 PM Vilnius time is 9:59 PM UTC
 
             // If it's already past 11:59 PM Vilnius time, set the update for the next day
             if (now >= nextUpdate) {
