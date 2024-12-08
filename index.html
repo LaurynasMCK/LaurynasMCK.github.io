@@ -22,6 +22,11 @@
             width: 80%;
             margin-bottom: 20px;
         }
+        #dailyMessage2 {
+            font-size: 2em;
+            width: 80%;
+            margin-bottom: 20px;
+        }
         #currentTime {
             font-size: 1.5em;
         }
@@ -34,8 +39,10 @@
     </style>
 </head>
 <body>
-    <h1 id="dailyMessage"></h1>
+    <h1 id="dailyMessage2"></h1>
     <div id="currentTime"></div>
+    <img id="dailyImage" src="IMG_20241208_211743_313.jpg" alt="puodeliukas">
+    <h1 id="dailyMessage"></h1>
     <script>
         const messages = [
             "Šiandien gero Hario Poterio su Tėčiu - gražios Kalėdų laukimo pradžios:) (Haris Poteris - burtininkas, sori už spoilerį)",
@@ -77,6 +84,7 @@
             const day = diffInDays < 25 ? diffInDays : 24;
 
             document.getElementById('dailyMessage').innerText = messages[day];
+            document.getElementById('dailyMessage2').innerText = "priminimas Urtei, kad ir vel viskas bus gerai-Mantė-";
         }
 
         function updateCurrentTime() {
