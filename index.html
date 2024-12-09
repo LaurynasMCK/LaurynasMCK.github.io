@@ -97,7 +97,7 @@
         function hideDailyMessage2AndImage() {
             const now = new Date();
             const nextMidnight = new Date(now);
-            nextMidnight.setHours(7, 55, 0, 0); // Set to next midnight
+            nextMidnight.setHours(23, 59, 0, 0); // Set to next midnight
 
             const timeUntilMidnight = nextMidnight.getTime() - now.getTime();
             setTimeout(() => {
