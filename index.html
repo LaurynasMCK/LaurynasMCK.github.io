@@ -17,11 +17,6 @@
             background-color: navy;
             color: white;
         }
-        #dailyMessage {
-            font-size: 2em;
-            width: 80%;
-            margin-bottom: 20px;
-        }
         #dailyMessage2 {
             font-size: 2em;
             width: 80%;
@@ -29,20 +24,26 @@
         }
         #currentTime {
             font-size: 1.5em;
+            margin-bottom: 20px;
         }
         #dailyImage { 
             width: 80%; 
             max-width: 600px; 
             height: auto; 
+            margin-bottom: 20px;
+        }
+        #dailyMessage {
+            font-size: 2em;
+            width: 80%;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <h1 id="dailyMessage2"></h1>
-    <div id="currentTime"></div>
     <img id="dailyImage" src="IMG_20241208_211743_313.jpg" alt="puodeliukas">
     <h1 id="dailyMessage"></h1>
+    <div id="currentTime"></div>
     <script>
         const messages = [
             "Šiandien gero Hario Poterio su Tėčiu - gražios Kalėdų laukimo pradžios:) (Haris Poteris - burtininkas, sori už spoilerį)",
@@ -93,14 +94,26 @@
             const timeString = now.toLocaleTimeString('en-GB', options);
         }
 
+        function hideDailyMessage2AndImage() {
+            const now = new Date();
+            const nextMidnight = new Date(now);
+            nextMidnight.setHours(7, 55, 0, 0); // Set to next midnight
+
+            const timeUntilMidnight = nextMidnight.getTime() - now.getTime();
+            setTimeout(() => {
+                document.getElementById('dailyMessage2').style.display = 'none';
+                document.getElementById('dailyImage').style.display = 'none';
+            }, timeUntilMidnight);
+        }
+
         function setNextUpdate() {
             const now = new Date();
             const nextUpdate = new Date(now);
-            nextUpdate.setUTCHours(19, 59, 0, 0); // 11:59 PM Vilnius time is 9:59 PM UTC
+            nextUpdate.setHours(23, 59, 0, 0); // Set update to 11:59 PM Vilnius time
 
             // If it's already past 11:59 PM Vilnius time, set the update for the next day
             if (now >= nextUpdate) {
-                nextUpdate.setUTCDate(nextUpdate.getUTCDate() + 1);
+                nextUpdate.setDate(nextUpdate.getDate() + 1);
             }
 
             const timeUntilUpdate = nextUpdate.getTime() - now.getTime();
@@ -112,6 +125,7 @@
 
         updateMessage(); // Update message initially
         setNextUpdate(); // Schedule the first update at the specified time
+        hideDailyMessage2AndImage(); // Schedule hiding the daily message 2 and image at midnight
         updateCurrentTime(); // Update the current time initially
         setInterval(updateCurrentTime, 1000); // Update the current time every second
     </script>
