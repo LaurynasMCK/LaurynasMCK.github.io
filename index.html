@@ -83,25 +83,13 @@
             const day = diffInDays < 25 ? diffInDays : 24;
 
             document.getElementById('dailyMessage').innerText = messages[day];
-            document.getElementById('dailyMessage2').innerText = "priminimas Urtei, kad ir vel viskas bus gerai-Mantė-";
+            document.getElementById('dailyMessage2').innerText = "<3";
         }
 
         function updateCurrentTime() {
             const now = new Date();
             const options = { timeZone: 'Europe/Vilnius', hour12: false };
             const timeString = now.toLocaleTimeString('en-GB', options);
-        }
-
-        function hideDailyMessage2AndImage() {
-            const now = new Date();
-            const nextMidnight = new Date(now);
-            nextMidnight.setHours(23, 59, 0, 0); // Set to next midnight
-
-            const timeUntilMidnight = nextMidnight.getTime() - now.getTime();
-            setTimeout(() => {
-                document.getElementById('dailyMessage2').style.display = 'none';
-                document.getElementById('dailyImage').style.display = 'none';
-            }, timeUntilMidnight);
         }
 
         function setNextUpdate() {
