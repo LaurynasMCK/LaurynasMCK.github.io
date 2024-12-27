@@ -41,6 +41,7 @@
 </head>
 </body>
     <h1 id="dailyMessage2"></h1>
+    <h1 id="dailyMessage1"></h1>
     <div id="currentTime"></div>
     <script>
         const messages = [
@@ -80,7 +81,7 @@
             const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24));
 
             // Ensure it doesn't go beyond 25 days
-            const day = diffInDays < 25 ? diffInDays : 24;
+            
 
             document.getElementById('dailyMessage').innerText = messages[day];
             document.getElementById('dailyMessage2').innerText = "Sveiki užklydę, jau baigėsi advento laikotarpis, svetainė palaikoma tol, kol Urtė visų dovanų negavo.";
